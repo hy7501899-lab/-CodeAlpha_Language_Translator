@@ -1,28 +1,24 @@
 import streamlit as st
 from deep_translator import GoogleTranslator
 
-# 1. ??????? ?????? ????????
 st.set_page_config(
     page_title="CodeAlpha Translation Tool",
-    page_icon="??",
+    page_icon="🌐",
     layout="centered"
 )
 
-# 2. ????? ??? Personal Branding ?? ?????? ??????? (Sidebar) - ???? ???????
 with st.sidebar:
-    st.markdown("### ????? Developer Profile")
-    st.markdown("**Yara Hassan**")
-    st.markdown("?? *Computer Science Student*")
+    st.markdown("### 👩‍💻 Developer Profile")
+    st.markdown("**Yara Engineering**")
+    st.markdown("🏢 *Computer Science and Artificial Intelligence Student*")
     st.markdown("---")
-    st.markdown("?? **Internship Project**")
+    st.markdown("🏅 **Internship Project**")
     st.markdown("This tool was developed as **Task 1** during the Artificial Intelligence Internship at **CodeAlpha**.")
 
-# 3. ????? ??????? ????????
-st.title("?? AI Language Translation Tool")
+st.title("🌐 AI Language Translation Tool")
 st.markdown("Welcome! Enter your text below, select the target language, and get your translation instantly.")
 st.markdown("---")
 
-# 4. ?????? ?????? ????????
 languages_dict = {
     'Arabic': 'ar',
     'English': 'en',
@@ -33,7 +29,6 @@ languages_dict = {
     'Turkish': 'tr'
 }
 
-# 5. ?????? ???????? ?????? ??????
 col1, col2 = st.columns(2)
 
 with col1:
@@ -42,13 +37,11 @@ with col1:
 with col2:
     target_lang = st.selectbox("To (Target Language):", list(languages_dict.keys()), index=1)
 
-# 6. ????? ????? ????
 text_to_translate = st.text_area("Enter text to translate:", placeholder="Type your text here...", height=150)
 
-# 7. ?? ????? ???????
 if st.button("Translate Text", type="primary"):
     if text_to_translate.strip() == "":
-        st.warning("?? Please enter some text to translate.")
+        st.warning("⚠️ Please enter some text to translate.")
     else:
         with st.spinner("Translating... Please wait..."):
             try:
@@ -59,18 +52,17 @@ if st.button("Translate Text", type="primary"):
                 
                 translated_result = translator.translate(text_to_translate)
                 
-                st.success("? Translation Completed!")
+                st.success("✨ Translation Completed!")
                 st.text_area("Translated Output:", value=translated_result, height=150, disabled=False)
                 
             except Exception as e:
                 st.error(f"An error occurred during translation: {str(e)}")
 
-# 8. ??? Personal Branding ?????? (Footer) - ???? ???????
 st.markdown("---")
 st.markdown(
     """
     <div style="text-align: center; color: #888888; font-size: 14px;">
-        Designed & Developed by <b>Yara Hassan</b> <br>
+        Designed & Developed by <b>Yara Engineering</b> <br>
         AI Internship Portfolio Project @ <b>CodeAlpha</b>
     </div>
     """, 
